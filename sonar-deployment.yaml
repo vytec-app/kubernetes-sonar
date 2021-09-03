@@ -1,3 +1,27 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sonar-data
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: default
+  resources:
+    requests:
+      storage: 2Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sonar-extensions
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: default
+  resources:
+    requests:
+      storage: 2Gi
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -33,13 +57,9 @@ spec:
          - name: sonarqube-data
            mountPath: /opt/sonarqube/data
       volumes:
-      - name: sonarqube-extensions
-        nfs:
-          server: ""
-          path: "/sonarqube/extensions"
-          readOnly: false
-      - name: sonarqube-data
-        nfs:
-          server: ""
-          path: "/sonarqube/data"
-          readOnly: false
+      - name: sonar-data
+        persistentVolumeClaim:
+          claimName: sonar-data
+      - name: sonar-extensions
+        persistentVolumeClaim:
+          claimName: sonar-extensions
