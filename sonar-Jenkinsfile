@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                
+                git 'https://github.com/jglick/simple-maven-project-with-tests.git'
+
+               
+                sh "/usr/bin/kubectl apply -f sonar-mysql-deployment.yaml -f sonar-svc-mysql.yaml -f sonar-deployment.yaml -f sonar-svc.yaml"
+
+               
+            }
+
+            
+        }
+    }
+}
