@@ -28,22 +28,3 @@ spec:
           value: sonar
         - name: MYSQL_PASSWORD
           value: sonar
-        volumeMounts:
-         - name: mysql-data
-           mountPath: /var/lib/mysql
-      volumes:
-      - name: mysql-data
-        persistentVolumeClaim:
-          claimName: mysql-data
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: mysql-data
-spec:
-  accessModes:
-  - ReadWriteOnce
-  storageClassName: default
-  resources:
-    requests:
-      storage: 2Gi
