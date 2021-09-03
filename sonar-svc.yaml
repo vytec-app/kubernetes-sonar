@@ -5,6 +5,7 @@ metadata:
   labels:
     name: sonar-svc
 spec:
+  type: NodePort
   ports:
   - protocol: TCP
     # port: is the abstracted Service port
