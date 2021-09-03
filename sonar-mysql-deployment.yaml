@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: sonar-mysql-deployment
@@ -6,6 +6,9 @@ metadata:
     app: sonar-mysql-deployment
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: sonar-mysql-deployment
   template:
     metadata:
       labels:
