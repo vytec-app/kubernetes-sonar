@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 
-                git 'https://github.com/jglick/simple-maven-project-with-tests.git'
+                git 'https://github.com/vytec-app/kubernetes-sonar.git'
 
                
                 sh "/usr/bin/kubectl apply -f sonar-mysql-deployment.yaml -f sonar-svc-mysql.yaml -f sonar-deployment.yaml -f sonar-svc.yaml"
