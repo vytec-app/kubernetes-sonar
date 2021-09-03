@@ -52,9 +52,9 @@ spec:
         - name: SONARQUBE_JDBC_URL
           value: jdbc:mysql://sonar-mysql:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true
         volumeMounts:
-         - name: sonarqube-extensions
+         - name: sonar-extensions
            mountPath: /opt/sonarqube/extensions
-         - name: sonarqube-data
+         - name: sonar-data
            mountPath: /opt/sonarqube/data
       volumes:
       - name: sonar-data
